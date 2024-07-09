@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/  # Adjust the destination path as per your setup
+permissions:
+  - object: /var/www/html
+    pattern: "**"
+    owner: ec2-user  # Adjust the owner as per your setup
+    group: apache    # Adjust the group as per your setup
+hooks:
+  BeforeInstall:
+    - location: scripts.sh
+      timeout: 300
+      runas: root
